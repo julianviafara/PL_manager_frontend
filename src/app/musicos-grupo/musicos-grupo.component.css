@@ -1,0 +1,162 @@
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  background-color: #FFF8F1; /* Solar Ivory */
+  min-height: calc(100vh - 70px);
+}
+
+.page-header {
+  margin-bottom: 40px;
+  text-align: center;
+  position: relative;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #0047AB, #FFD700, #0047AB);
+  border-radius: 2px;
+}
+
+.page-header h1 {
+  color: #2B2B2B; /* Midnight Graphite */
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(43, 43, 43, 0.1);
+}
+
+.page-header h1::before {
+  content: "🎵";
+  margin-right: 15px;
+  font-size: 0.8em;
+}
+
+.page-header p {
+  color: #2B2B2B; /* Midnight Graphite */
+  font-size: 1.2rem;
+  margin: 0;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+.page-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.card {
+  background-color: #2F3B52; /* Cosmic Slate */
+  color: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(47, 59, 82, 0.4);
+  padding: 40px;
+  max-width: 700px;
+  width: 100%;
+  border: 2px solid #A6B1C0; /* Orion Mist */
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #FFD700, #0047AB, #FFD700);
+}
+
+.card h2 {
+  color: white;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  border-bottom: 2px solid #FFD700; /* Stellar Gold */
+  padding-bottom: 15px;
+  font-weight: 600;
+  position: relative;
+}
+
+.card h2::before {
+  content: "🎼";
+  margin-right: 10px;
+  font-size: 0.9em;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card li {
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(166, 177, 192, 0.3); /* Orion Mist with opacity */
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-left: 30px;
+}
+
+.card li:hover {
+  color: #FFD700; /* Stellar Gold */
+  transform: translateX(5px);
+}
+
+.card li:before {
+  content: "★";
+  color: #FFD700; /* Stellar Gold */
+  font-weight: bold;
+  margin-right: 15px;
+  position: absolute;
+  left: 0;
+  font-size: 1.2em;
+}
+
+.card li:last-child {
+  border-bottom: none;
+}
+
+/* Add some interactive elements */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(47, 59, 82, 0.5);
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    padding: 20px 15px;
+  }
+  
+  .page-header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .page-header p {
+    font-size: 1rem;
+  }
+  
+  .card {
+    padding: 25px;
+    margin: 0 10px;
+  }
+  
+  .card h2 {
+    font-size: 1.5rem;
+  }
+  
+  .card li {
+    font-size: 1rem;
+    padding: 12px 0;
+  }
+}

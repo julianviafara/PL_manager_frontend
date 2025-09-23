@@ -1,0 +1,59 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1>{{ title }}</h1>
+    <p>Gestiona músicos y grupos musicales</p>
+  </div>
+
+  <div class="page-content">
+    <div class="card">
+      <h2>Formulario</h2>
+      <form [formGroup]="form" (ngSubmit)="onCreate()" class="form-grid">
+        <div class="form-row">
+          <label>Nombre<span class="req">*</span></label>
+          <input formControlName="nombre" type="text" placeholder="Nombre" />
+          <div class="error" *ngIf="form.get('nombre')?.touched && form.get('nombre')?.invalid">Nombre es requerido</div>
+        </div>
+        <div class="form-row">
+          <label>Contacto</label>
+          <input formControlName="contacto" type="text" placeholder="Contacto" />
+        </div>
+        <div class="form-row">
+          <label>Clase<span class="req">*</span></label>
+          <select formControlName="clase">
+            <option value="musico">Músico</option>
+            <option value="grupo">Grupo</option>
+          </select>
+        </div>
+
+        <div class="actions">
+          <button type="button" (click)="onSearch()" class="btn">Search</button>
+          <button type="submit" class="btn primary">Create</button>
+        </div>
+        <div class="status" *ngIf="error()">{{ error() }}</div>
+      </form>
+
+      <h2>Resultados</h2>
+      <table class="results" *ngIf="clientes.length; else empty">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Contacto</th>
+            <th>Clase</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of clientes">
+            <td>{{ c.id || c.id_cliente || '-' }}</td>
+            <td>{{ c.nombre }}</td>
+            <td>{{ c.contacto || '-' }}</td>
+            <td>{{ c.clase || '-' }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <ng-template #empty>
+        <div class="empty">Sin resultados</div>
+      </ng-template>
+    </div>
+  </div>
+</div>

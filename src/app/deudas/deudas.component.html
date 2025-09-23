@@ -1,0 +1,71 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1>{{ title }}</h1>
+    <p>Gestiona deudas y pagos</p>
+  </div>
+
+  <div class="page-content">
+    <div class="card">
+      <h2>Formulario</h2>
+      <form [formGroup]="form" (ngSubmit)="onCreate()" class="form-grid">
+        <div class="form-row">
+          <label>Nombre del Cliente<span class="req">*</span></label>
+          <input formControlName="nombreCliente" type="text" placeholder="Nombre del cliente" />
+          <div class="error" *ngIf="form.get('nombreCliente')?.touched && form.get('nombreCliente')?.invalid">Nombre del cliente es requerido</div>
+        </div>
+        <div class="form-row">
+          <label>Concepto<span class="req">*</span></label>
+          <input formControlName="concepto" type="text" placeholder="Concepto" />
+          <div class="error" *ngIf="form.get('concepto')?.touched && form.get('concepto')?.invalid">Concepto es requerido</div>
+        </div>
+        <div class="form-row">
+          <label>Valor<span class="req">*</span></label>
+          <input formControlName="valor" type="number" step="0.01" min="0" />
+        </div>
+        <div class="form-row">
+          <label>Pago<span class="req">*</span></label>
+          <input formControlName="pago" type="number" step="0.01" min="0" />
+        </div>
+        <div class="form-row">
+          <label>Notas</label>
+          <textarea formControlName="notas" rows="2" placeholder="Notas"></textarea>
+        </div>
+
+        <div class="actions">
+          <button type="button" (click)="onSearch()" class="btn">Buscar</button>
+          <button type="submit" class="btn primary">Crear</button>
+        </div>
+        <div class="status" *ngIf="error()">{{ error() }}</div>
+      </form>
+
+      <h2>Resultados</h2>
+      <table class="results" *ngIf="deudas.length; else empty">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Cliente</th>
+            <th>Concepto</th>
+            <th>Valor</th>
+            <th>Pago</th>
+            <th>Devuelta</th>
+            <th>Notas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let d of deudas">
+            <td>{{ d.id || '-' }}</td>
+            <td>{{ d.id_cliente || d.cliente?.id || '-' }}</td>
+            <td>{{ d.concepto }}</td>
+            <td>{{ d.valor | number:'1.2-2' }}</td>
+            <td>{{ d.pago | number:'1.2-2' }}</td>
+            <td>{{ d.devuelta | number:'1.2-2' }}</td>
+            <td>{{ d.notas || '-' }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <ng-template #empty>
+        <div class="empty">Sin resultados</div>
+      </ng-template>
+    </div>
+  </div>
+</div>
