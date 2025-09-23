@@ -1,1 +1,76 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: #FFF8F1; /* Solar Ivory */
+  color: #2B2B2B; /* Midnight Graphite */
+}
+
+/* Shared form/table styles matching palette */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+}
+
+label { font-weight: 600; }
+.req { color: #FFD700; }
+
+input, select, textarea {
+  padding: 10px 12px;
+  border: 2px solid #A6B1C0; /* Orion Mist */
+  border-radius: 8px;
+  background: #fff;
+  color: #2B2B2B;
+}
+
+.actions { display: flex; gap: 12px; margin-top: 8px; }
+
+.btn {
+  background: #0047AB; /* Regulus Core Blue */
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.btn:hover { background: #FF5733; /* Antares Ember */ }
+.btn.primary { box-shadow: 0 0 0 2px #FFD700 inset; }
+
+.status { margin-top: 8px; color: #FF5733; }
+.error { color: #FF5733; font-size: 0.9rem; margin-top: 4px; }
+.empty { opacity: 0.7; padding: 8px 0; }
+
+.card {
+  background-color: #2F3B52; /* Cosmic Slate */
+  color: white;
+  border: 2px solid #A6B1C0; /* Orion Mist */
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+}
+
+table.results {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  color: #2B2B2B;
+  border: 2px solid #A6B1C0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+table.results th, table.results td {
+  border-bottom: 1px solid #A6B1C0;
+  padding: 10px 12px;
+}
+table.results thead {
+  background: #2F3B52;
+  color: #fff;
+}
