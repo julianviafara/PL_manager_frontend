@@ -1,0 +1,123 @@
+<div class="data-card">
+  <div class="card-header">
+    <h2>{{ cardTitle() }}</h2>
+    <button (click)="refreshData()" class="refresh-btn" [disabled]="loading()">
+      <span class="refresh-icon" [class.spinning]="loading()">🔄</span>
+      Actualizar
+    </button>
+  </div>
+
+  <div class="card-content">
+    @if (loading()) {
+      <div class="loading">
+        <div class="spinner"></div>
+        <p>Cargando datos...</p>
+      </div>
+    } @else if (error()) {
+      <div class="error-message">
+        <span class="error-icon">⚠️</span>
+        <p>{{ error() }}</p>
+        <button (click)="refreshData()" class="retry-btn">Reintentar</button>
+      </div>
+    } @else if (data().length === 0) {
+      <div class="empty-state">
+        <span class="empty-icon">📭</span>
+        <p>No hay datos disponibles</p>
+      </div>
+    } @else {
+      <div class="data-list">
+        <!-- Clientes List -->
+        @if (dataType() === 'clientes') {
+          @for (cliente of clientes(); track cliente.id || cliente.id_cliente || cliente.nombre) {
+            <div class="data-item cliente-item">
+              <div class="item-header">
+                <h3>{{ cliente.nombre }}</h3>
+                <span class="item-id">ID: {{ cliente.id || cliente.id_cliente || '-' }}</span>
+              </div>
+              <div class="item-details">
+                <div class="detail-row">
+                  <span class="label">Contacto:</span>
+                  <span class="value">{{ cliente.contacto || 'No especificado' }}</span>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Tipo:</span>
+                  <span class="value type-badge" [class.musico]="cliente.clase === 'musico'" [class.grupo]="cliente.clase === 'grupo'">
+                    {{ cliente.clase === 'musico' ? 'Músico' : cliente.clase === 'grupo' ? 'Grupo' : 'No especificado' }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          }
+        }
+
+        <!-- Productos List -->
+        @if (dataType() === 'productos') {
+          @for (producto of productos(); track producto.id || producto.nombre) {
+            <div class="data-item producto-item">
+              <div class="item-header">
+                <h3>{{ producto.nombre }}</h3>
+                <span class="item-id">ID: {{ producto.id || '-' }}</span>
+              </div>
+              <div class="item-details">
+                <div class="detail-row">
+                  <span class="label">Stock:</span>
+                  <span class="value stock-value" [class.low-stock]="producto.stock < 10">
+                    {{ producto.stock }} unidades
+                  </span>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Precio:</span>
+                  <span class="value price-value">${{ producto.precio | number:'1.2-2' }}</span>
+                </div>
+                @if (producto.notas) {
+                  <div class="detail-row">
+                    <span class="label">Notas:</span>
+                    <span class="value">{{ producto.notas }}</span>
+                  </div>
+                }
+              </div>
+            </div>
+          }
+        }
+
+        <!-- Deudas List -->
+        @if (dataType() === 'deudas') {
+          @for (deuda of deudas(); track deuda.id || deuda.concepto) {
+            <div class="data-item deuda-item">
+              <div class="item-header">
+                <h3>{{ deuda.concepto }}</h3>
+                <span class="item-id">ID: {{ deuda.id || '-' }}</span>
+              </div>
+              <div class="item-details">
+                <div class="detail-row">
+                  <span class="label">Cliente ID:</span>
+                  <span class="value">{{ deuda.id_cliente }}</span>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Valor:</span>
+                  <span class="value">${{ deuda.valor | number:'1.2-2' }}</span>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Pago:</span>
+                  <span class="value">${{ deuda.pago | number:'1.2-2' }}</span>
+                </div>
+                <div class="detail-row">
+                  <span class="label">Devuelta:</span>
+                  <span class="value devuelta-value" [class.positive]="deuda.devuelta > 0" [class.negative]="deuda.devuelta < 0">
+                    ${{ deuda.devuelta | number:'1.2-2' }}
+                  </span>
+                </div>
+                @if (deuda.notas) {
+                  <div class="detail-row">
+                    <span class="label">Notas:</span>
+                    <span class="value">{{ deuda.notas }}</span>
+                  </div>
+                }
+              </div>
+            </div>
+          }
+        }
+      </div>
+    }
+  </div>
+</div>

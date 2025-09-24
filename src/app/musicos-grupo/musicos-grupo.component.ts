@@ -2,11 +2,12 @@ import { Component, OnInit, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ApiService, ClientePayload } from '../api.service';
+import { DataCardComponent } from '../data-card/data-card.component';
 
 @Component({
   selector: 'app-musicos-grupo',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, DataCardComponent],
   templateUrl: './musicos-grupo.component.html',
   styleUrl: './musicos-grupo.component.css'
 })

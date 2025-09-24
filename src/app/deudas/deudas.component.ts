@@ -2,11 +2,12 @@ import { Component, OnInit, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ApiService, DeudaPayload } from '../api.service';
+import { DataCardComponent } from '../data-card/data-card.component';
 
 @Component({
   selector: 'app-deudas',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, DataCardComponent],
   templateUrl: './deudas.component.html',
   styleUrl: './deudas.component.css'
 })
