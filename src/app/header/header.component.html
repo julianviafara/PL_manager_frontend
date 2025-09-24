@@ -3,18 +3,40 @@
     <div class="nav-brand">
       <h1>PL Management</h1>
     </div>
-    <ul class="nav-links">
-      @for (item of navigationItems; track item.route) {
-        <li>
-          <a 
-            [routerLink]="item.route" 
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{exact: false}"
-            class="nav-link">
-            {{ item.label }}
-          </a>
-        </li>
-      }
-    </ul>
+    
+    <div class="nav-content">
+      <ul class="nav-links">
+        @for (item of navigationItems; track item.route) {
+          <li>
+            <a 
+              [routerLink]="item.route" 
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact: false}"
+              class="nav-link">
+              {{ item.label }}
+            </a>
+          </li>
+        }
+      </ul>
+      
+      <div class="theme-toggle">
+        <button 
+          (click)="toggleTheme()" 
+          class="theme-btn"
+          [attr.aria-label]="themeService.isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+          title="{{ themeService.isDark() ? 'Switch to light mode' : 'Switch to dark mode' }}">
+          <span class="theme-icon">
+            @if (themeService.isDark()) {
+              ☀️
+            } @else {
+              🌙
+            }
+          </span>
+          <span class="theme-label">
+            {{ themeService.isDark() ? 'Light' : 'Dark' }}
+          </span>
+        </button>
+      </div>
+    </div>
   </nav>
 </header>
