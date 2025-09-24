@@ -35,7 +35,6 @@
 }
 
 .page-header h1::before {
-  content: "💰";
   margin-right: 15px;
   font-size: 0.8em;
 }
@@ -91,7 +90,6 @@
 }
 
 .card h2::before {
-  content: "📊";
   margin-right: 10px;
   font-size: 0.9em;
 }

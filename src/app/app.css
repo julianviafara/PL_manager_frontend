@@ -67,7 +67,7 @@ footer {
   padding: 5px 0;
   box-shadow: 0 -2px 8px rgba(47, 59, 82, 0.08);
   gap: 12px;
-  opacity: 0.4;
+  opacity: 0.6;
 
   /*background-color: var(--bg-secondary);*/
 }

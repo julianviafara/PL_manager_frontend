@@ -30,8 +30,7 @@
 }
 
 .nav-brand h1::before {
-  content: "🎵";
-  color: var(--accent-primary);
+   color: var(--accent-primary);
   margin-right: 8px;
   font-size: 1.2em;
 }
